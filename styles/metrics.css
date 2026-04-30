@@ -1,0 +1,79 @@
+/* Metrics — six numbers, grid w/ ink hairlines */
+.za-metrics-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+.za-metrics-head .za-metrics-aside {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 32ch;
+  text-align: right;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.za-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+}
+@media (max-width: 880px) {
+  .za-metrics-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .za-metrics-grid { grid-template-columns: 1fr; }
+}
+
+.za-metric {
+  padding: 36px 32px 32px;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 36px;
+  min-height: 240px;
+  background: var(--bg);
+  transition: background 0.25s;
+}
+.za-metric:hover {
+  background: var(--bg-2);
+}
+.za-metric-big {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(64px, 7vw, 112px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.za-metric-big .unit {
+  font-size: 0.42em;
+  vertical-align: 0.5em;
+  color: var(--muted);
+  margin-left: 4px;
+  letter-spacing: 0;
+}
+.za-metric.is-accent .za-metric-big { color: var(--accent); }
+
+.za-metric-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.za-metric-label {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink-2);
+  max-width: 36ch;
+}

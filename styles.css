@@ -1,0 +1,296 @@
+/* ============================================================
+   Zahra Afrookhteh — Personal Brand
+   Tokens — cream paper, terracotta accent (matches deck)
+   ============================================================ */
+:root {
+  /* Warm paper base */
+  --bg:      #F5F1EA;        /* primary canvas — paper */
+  --bg-2:    #ECE6DA;        /* card / raised */
+  --bg-3:    #E2DBCB;        /* deeper recess */
+  --line:    #D8D0C2;        /* hairline */
+  --line-soft: #E4DED0;
+
+  /* Inks */
+  --ink:     #1C1B19;        /* primary copy */
+  --ink-2:   #2C2A27;        /* secondary copy */
+  --muted:   #736C61;        /* tertiary, captions */
+  --muted-2: #9A9286;
+
+  /* Accents — terracotta family, same chroma rotated hue */
+  --accent:        #B5471B;             /* terracotta */
+  --accent-hi:     oklch(0.62 0.16 38);
+  --accent-soft:   #E9B8A2;
+  --accent-wash:   #F0DCCD;
+  --accent-deep:   oklch(0.42 0.12 38);
+
+  /* Type */
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-sans:    "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  /* Rhythm */
+  --measure: 68ch;
+  --pad-page: clamp(20px, 4vw, 56px);
+  --maxw: 1280px;
+  --maxw-narrow: 920px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+
+::selection { background: var(--accent); color: var(--bg); }
+
+/* ============================================================
+   Layout helpers
+   ============================================================ */
+.za-page {
+  position: relative;
+  z-index: 2;
+}
+.za-container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--pad-page);
+}
+.za-narrow {
+  max-width: var(--maxw-narrow);
+  margin: 0 auto;
+  padding: 0 var(--pad-page);
+}
+.za-section {
+  padding: clamp(72px, 10vw, 140px) 0;
+  position: relative;
+}
+.za-section + .za-section {
+  border-top: 1px solid var(--line);
+}
+
+/* Section eyebrow + title pattern */
+.za-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.za-eyebrow::before {
+  content: "";
+  width: 18px; height: 1px;
+  background: var(--accent);
+}
+
+.za-section-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(36px, 5.4vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.018em;
+  margin: 18px 0 0;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.za-section-title em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.za-section-lede {
+  margin-top: 22px;
+  max-width: 60ch;
+  color: var(--ink-2);
+  font-size: clamp(17px, 1.35vw, 19px);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+/* ============================================================
+   Top bar
+   ============================================================ */
+.za-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 18px var(--pad-page);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(14px) saturate(140%);
+  background: color-mix(in oklab, var(--bg) 80%, transparent);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.za-nav.is-scrolled {
+  border-bottom-color: var(--line);
+}
+.za-mark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--ink);
+}
+.za-mark-glyph {
+  width: 30px; height: 30px;
+  border: 1px solid var(--ink);
+  display: grid; place-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0;
+  color: var(--ink);
+  font-weight: 500;
+}
+.za-nav-links {
+  display: flex;
+  gap: 26px;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 500;
+}
+.za-nav-links a {
+  text-decoration: none;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.za-nav-links a:hover { color: var(--ink); }
+.za-nav-cta {
+  padding: 9px 18px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.za-nav-cta:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+@media (max-width: 760px) {
+  .za-nav-links { display: none; }
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.za-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.15s, background 0.2s, color 0.2s, border 0.2s;
+}
+.za-btn:hover { transform: translateY(-1px); }
+.za-btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+.za-btn-primary:hover {
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+}
+.za-btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.za-btn-ghost:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+.za-btn-arrow {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+.za-btn:hover .za-btn-arrow { transform: translateX(3px); }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.za-footer {
+  border-top: 1px solid var(--line);
+  padding: 60px var(--pad-page) 40px;
+  color: var(--muted);
+  font-size: 14px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+.za-footer-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+}
+.za-footer a {
+  color: var(--ink-2);
+  text-decoration: none;
+  margin-right: 22px;
+  transition: color 0.2s;
+}
+.za-footer a:hover { color: var(--accent); }
+
+/* ============================================================
+   Reveal-on-scroll
+   ============================================================ */
+.za-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.za-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   Utility
+   ============================================================ */
+.za-mono { font-family: var(--font-mono); }
+.za-rule {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+  margin: 0;
+}

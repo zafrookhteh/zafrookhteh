@@ -1,0 +1,53 @@
+/* Three Transformations — three columns, numbered */
+.za-trans-head {
+  margin-bottom: 64px;
+}
+.za-trans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+@media (max-width: 880px) {
+  .za-trans-grid { grid-template-columns: 1fr; gap: 56px; }
+}
+.za-trans-col {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-top: 28px;
+  border-top: 2px solid var(--ink);
+}
+.za-trans-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--accent);
+  font-weight: 400;
+}
+.za-trans-h {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.4vw, 30px);
+  line-height: 1.15;
+  color: var(--ink);
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.za-trans-p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin: 0;
+  max-width: 38ch;
+}
+.za-trans-quote {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.45;
+}

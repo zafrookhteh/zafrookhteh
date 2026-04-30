@@ -1,0 +1,94 @@
+/* Contact / What's Next */
+.za-contact {
+  background: var(--ink);
+  color: var(--bg);
+  padding: clamp(80px, 12vw, 160px) 0;
+}
+.za-contact .za-eyebrow {
+  color: var(--accent-soft);
+}
+.za-contact .za-eyebrow::before {
+  background: var(--accent-soft);
+}
+.za-contact-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 84px);
+  line-height: 1.02;
+  letter-spacing: -0.018em;
+  margin: 18px 0 0;
+  color: var(--bg);
+  max-width: 22ch;
+  text-wrap: balance;
+}
+.za-contact-title em {
+  font-style: italic;
+  color: var(--accent-soft);
+  font-weight: 400;
+}
+
+.za-roles {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+@media (max-width: 760px) {
+  .za-roles { grid-template-columns: 1fr; }
+}
+.za-role {
+  padding: 22px 24px;
+  border: 1px solid color-mix(in oklab, var(--bg) 30%, transparent);
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--bg);
+  background: transparent;
+}
+.za-role-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--accent-soft);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.za-contact-row {
+  margin-top: 72px;
+  padding-top: 36px;
+  border-top: 1px solid color-mix(in oklab, var(--bg) 24%, transparent);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+@media (max-width: 760px) {
+  .za-contact-row { grid-template-columns: repeat(2, 1fr); }
+}
+.za-contact-k {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.za-contact-v {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--bg);
+  line-height: 1.35;
+}
+.za-contact-v a {
+  color: var(--bg);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in oklab, var(--bg) 30%, transparent);
+  transition: border-color 0.2s, color 0.2s;
+}
+.za-contact-v a:hover {
+  color: var(--accent-soft);
+  border-color: var(--accent-soft);
+}

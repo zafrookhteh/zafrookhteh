@@ -1,0 +1,267 @@
+/* Hero — type-driven, with a "now" panel and CTA */
+.za-hero {
+  position: relative;
+  padding: 140px var(--pad-page) 80px;
+  overflow: hidden;
+}
+.za-hero::before {
+  content: "";
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, color-mix(in oklab, var(--accent) 14%, transparent) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+.za-hero::after {
+  content: "";
+  position: absolute;
+  bottom: -300px; left: -100px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, color-mix(in oklab, var(--accent-soft) 30%, transparent) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+.za-hero-grid {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(40px, 5vw, 80px);
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 960px) {
+  .za-hero-grid { grid-template-columns: 1fr; }
+}
+
+.za-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg-2);
+  font-weight: 500;
+}
+.za-hero-pulse {
+  width: 7px; height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 60%, transparent);
+  animation: za-pulse 2s infinite;
+}
+@keyframes za-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 60%, transparent); }
+  50%      { box-shadow: 0 0 0 6px transparent; }
+}
+
+.za-hero-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(48px, 7.5vw, 104px);
+  line-height: 0.96;
+  letter-spacing: -0.022em;
+  margin: 28px 0 0;
+  text-wrap: balance;
+}
+.za-hero-title em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.za-hero-lede {
+  margin-top: 32px;
+  max-width: 56ch;
+  color: var(--ink-2);
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(20px, 1.6vw, 24px);
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.za-hero-actions {
+  margin-top: 40px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.za-hero-meta {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  max-width: 64ch;
+}
+.za-hero-meta-k {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.za-hero-meta-v {
+  color: var(--ink);
+  font-size: 14px;
+  font-family: var(--font-display);
+}
+@media (max-width: 540px) {
+  .za-hero-meta { grid-template-columns: 1fr 1fr; }
+}
+
+/* Right column — portrait placeholder + quote */
+.za-hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: stretch;
+}
+.za-portrait {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  padding: 14px;
+}
+.za-portrait-frame {
+  aspect-ratio: 4/5;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      var(--bg-3) 0 14px,
+      var(--bg-2) 14px 28px
+    );
+  display: grid;
+  place-items: center;
+}
+.za-portrait-placeholder {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  padding: 20px;
+}
+.za-portrait-placeholder .ph-name {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.za-portrait-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 14px;
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.za-portrait-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--ink);
+}
+.za-portrait-role {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.za-hero-quote {
+  position: relative;
+  padding: 24px 24px 24px 36px;
+  background: var(--bg-2);
+  border-left: 2px solid var(--accent);
+}
+.za-hero-quote p {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 0;
+  font-weight: 300;
+  text-wrap: balance;
+  color: var(--ink);
+}
+.za-hero-quote em {
+  font-style: italic;
+  color: var(--accent);
+}
+.za-quote-mark {
+  position: absolute;
+  top: 8px; left: 12px;
+  font-family: var(--font-display);
+  font-size: 36px;
+  color: var(--accent);
+  line-height: 1;
+}
+.za-quote-attr {
+  display: block;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Marquee under hero */
+.za-hero-marquee {
+  margin-top: 80px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 22px 0;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.za-marquee-track {
+  display: flex;
+  gap: 60px;
+  width: max-content;
+  animation: za-marquee 38s linear infinite;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.za-marquee-row {
+  display: flex; gap: 60px;
+  align-items: center;
+}
+.za-marquee-row span:nth-child(2n) {
+  color: var(--accent);
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 500;
+}
+@keyframes za-marquee {
+  to { transform: translateX(-50%); }
+}
