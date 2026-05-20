@@ -140,34 +140,14 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  background:
-    repeating-linear-gradient(
-      135deg,
-      var(--bg-3) 0 14px,
-      var(--bg-2) 14px 28px
-    );
-  display: grid;
-  place-items: center;
+  background: var(--bg-3);
 }
-.za-portrait-placeholder {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-align: center;
-  padding: 20px;
-}
-.za-portrait-placeholder .ph-name {
+.za-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
   display: block;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 300;
-  font-size: 28px;
-  letter-spacing: -0.01em;
-  text-transform: none;
-  color: var(--ink);
-  margin-bottom: 12px;
 }
 .za-portrait-caption {
   display: flex;

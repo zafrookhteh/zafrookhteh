@@ -57,10 +57,11 @@ const Hero = () => {
         <div className="za-hero-right">
           <div className="za-portrait">
             <div className="za-portrait-frame">
-              <div className="za-portrait-placeholder">
-                <span className="ph-name">Zahra</span>
-                Portrait · 4:5
-              </div>
+              <img
+                src="components/images/zahra.head.png"
+                alt="Zahra Afrookhteh"
+                className="za-portrait-img"
+              />
             </div>
             <div className="za-portrait-caption">
               <div className="za-portrait-name">Zahra Afrookhteh</div>
